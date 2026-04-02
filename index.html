@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ibrohim IT Reset</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  overflow-x: hidden;
+}header { text-align: center; padding: 20px; font-size: 24px; font-weight: bold; }
+
+.container { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 70vh; gap: 20px; }
+
+button { padding: 15px 25px; border: none; border-radius: 12px; font-size: 16px; cursor: pointer; transition: 0.3s; }
+
+button:hover { transform: scale(1.1); }
+
+.btn1 { background: #00c6ff; } .btn2 { background: #f7971e; } .btn3 { background: #ff416c; }
+
+.bottom-panel { position: fixed; bottom: -200px; left: 0; width: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); padding: 20px; text-align: center; transition: 0.5s; }
+
+.bottom-panel.active { bottom: 0; }
+
+.side-left, .side-right { position: fixed; top: 50%; transform: translateY(-50%); width: 150px; height: 200px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); transition: 0.5s; }
+
+.side-left { left: -150px; } .side-right { right: -150px; }
+
+.side-left.active { left: 0; } .side-right.active { right: 0; }
+
+.swipe-area { position: fixed; bottom: 0; width: 100%; height: 50px; }
+
+footer { text-align: center; padding: 20px; }
+
+a { color: #00c6ff; text-decoration: none; } </style>
+
+</head>
+<body><header>Ibrohim IT | Сброс Android</header><div class="container">
+  <button class="btn1" onclick="goTelegram()">Зайди в мой Telegram</button>
+  <button class="btn2" onclick="watchSteps()">Следуй по шагам видео</button>
+  <button class="btn3" onclick="success()">Всё получилось — оплати</button>
+</div><div class="bottom-panel" id="bottomPanel">
+  <p>Готово? Подтверди выполнение 👇</p>
+  <button onclick="goTelegram()">Перейти в Telegram</button>
+</div><div class="side-left" id="leftPanel"></div>
+<div class="side-right" id="rightPanel"></div><div class="swipe-area" ontouchstart="startSwipe(event)" ontouchend="endSwipe(event)"></div><footer>
+  <p>Telegram канал: <a href="https://t.me/IbrohimIT" target="_blank">@IbrohimIT</a></p>
+</footer><script>
+let startY = 0;
+
+function startSwipe(e) {
+  startY = e.touches[0].clientY;
+}
+
+function endSwipe(e) {
+  let endY = e.changedTouches[0].clientY;
+  if(startY - endY > 50) {
+    document.getElementById("bottomPanel").classList.add("active");
+    document.getElementById("leftPanel").classList.add("active");
+    document.getElementById("rightPanel").classList.add("active");
+  }
+}
+
+function goTelegram() {
+  window.open("https://t.me/IbrohimIT", "_blank");
+}
+
+function watchSteps() {
+  alert("Скоро тут будет видео инструкция");
+}
+
+function success() {
+  alert("Оплата будет доступна скоро");
+}
+</script></body>
+</html>
